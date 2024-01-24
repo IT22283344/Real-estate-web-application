@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Signin() {
   return (
-    <div>Signin</div>
+    <div className='text-blue-800'>Signin
+    
+    </div>
+    
+    
   )
 }
