@@ -1,41 +1,41 @@
 import react from 'react';
 import  { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+import { signinStart, signinSuccess, signinFaliure } from '../redux/user/userslice';
+import {  useDispatch, useSelector } from 'react-redux';
 
 export default function Signin() {
   const[formData,setformData]=useState({});
-  const [error,setError]=useState(null);
-  const [loading,setLoading]=useState(false);
+  const {loading,error}=useSelector((state)=>state.user);
+  const dispatch=useDispatch();
   const navigate=useNavigate();
   const handlechange=(e)=>{
     setformData({...formData,[e.target.id]:e.target.value});
   };
   
-  const handlesubmit=async (e)=>{
+  const handlesubmit = async (e) => {
     e.preventDefault();
-    try{
-      setLoading(true);
-      setError(false);
-      const res= await fetch('/api/auth/signin',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
+    try {
+      dispatch(signinStart());
+      const res = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        body:JSON.stringify(formData),
+        body: JSON.stringify(formData),
       });
-      const data=await res.json();
-      setLoading(false);
-      if(data.success===false){
-          setError(true);
-          return;
+      const data = await res.json();
+      dispatch(signinSuccess(data));
+      if (data.success === false) {
+        dispatch(signinFaliure(data));
+        return;
       }
       navigate('/');
-    
+    } catch (error) {
+      dispatch(signinFaliure(error));
     }
-    catch(error){}
-      setLoading(false);
-      
   };
+  
  
   return (
     <div className='p-5 max-w-lg mx-auto'>
@@ -53,7 +53,7 @@ export default function Signin() {
         </Link>
        
       </div>
-      <p className='text-red-600 mt-5'>{error && 'Something went wrong!!'}</p>
+      <p className='text-red-600 mt-5'>{error ? error.message || 'Something went wrong!!':''}</p>
  
     </div>
   )
