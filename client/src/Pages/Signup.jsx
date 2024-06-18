@@ -2,6 +2,7 @@ import react from 'react';
 import { set } from 'mongoose';
 import  { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
+import OAuth from '../Components/OAuth';
 
 export default function Signup() {
   const[formData,setformData]=useState({});
@@ -31,7 +32,7 @@ export default function Signup() {
           setError(true);
           return;
       }
-      navigate('/');
+      navigate('/signin');
     
     }
     catch(error){}
@@ -47,7 +48,10 @@ export default function Signup() {
         <input className='bg-slate-100  rounded' id='email' type='email' autoComplete='email' placeholder='E-mail' onChange={handlechange} />
         <input className='bg-slate-100  rounded' id='password' type='password' placeholder='*********' onChange={handlechange}/>
         <button className='bg-slate-700 text-white rounded-lg p-2 uppercase hover:opacity-95' >{loading?'loading...':'sign Up'}</button>
+        <OAuth/>
+
       </form>
+
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
         <Link to='/signin'>

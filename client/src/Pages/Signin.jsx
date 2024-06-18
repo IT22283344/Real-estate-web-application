@@ -3,6 +3,7 @@ import  { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { signinStart, signinSuccess, signinFaliure } from '../redux/user/userslice';
 import {  useDispatch, useSelector } from 'react-redux';
+import OAuth from '../Components/OAuth';
 
 export default function Signin() {
   const[formData,setformData]=useState({});
@@ -30,6 +31,7 @@ export default function Signin() {
         dispatch(signinFaliure(data));
         return;
       }
+      dispatch(signinSuccess(data));
       navigate('/');
     } catch (error) {
       dispatch(signinFaliure(error));
@@ -45,7 +47,10 @@ export default function Signin() {
         <input className='bg-slate-100  rounded' id='email' type='email' autoComplete='email' placeholder='E-mail' onChange={handlechange} />
         <input className='bg-slate-100  rounded' id='password' type='password' placeholder='*********' onChange={handlechange}/>
         <button className='bg-slate-700 text-white rounded-lg p-2 uppercase hover:opacity-95' >{loading?'loading...':'sign In'}</button>
+        <OAuth/>
+
       </form>
+
       <div className='flex gap-2 mt-5'>
         <p>Dont Have an account?</p>
         <Link to='/signup'>
