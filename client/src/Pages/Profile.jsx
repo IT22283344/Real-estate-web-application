@@ -25,7 +25,10 @@ export default function Profile() {
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
+  const [UpdateSuccess, setUpdateSuccess] = useState(false);
+
   const dispatch = useDispatch();
+
   console.log(formData);
 
   useEffect(() => {
@@ -149,6 +152,10 @@ export default function Profile() {
         <span className="text-red-700 cursor-pointer">Delete account</span>
         <span className="text-red-700 cursor-pointer">Sign out</span>
       </div>
+
+      <p className="text-red-700 mt-5">{error ? error : ''}</p>
+      <p className="text-green-700 mt-5">{UpdateSuccess ? 'User is updated successfully!' : ''}</p>
+
     </div>
   );
 }
