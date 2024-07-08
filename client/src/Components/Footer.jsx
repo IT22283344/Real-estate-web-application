@@ -1,6 +1,5 @@
-/* eslint-disable no-irregular-whitespace */
-
 import "boxicons/css/boxicons.min.css";
+import { Link } from "react-router-dom";
 
 export default function FooterCom() {
   return (
@@ -41,44 +40,34 @@ export default function FooterCom() {
               href="#!"
               className="mr-6 text-neutral-600 dark:text-neutral-200"
             >
-             {/* if there instagram account svg need to paste here */}
+              {/* if there instagram account svg need to paste here */}
             </a>
-
           </div>
         </div>
 
         <div className="mx-6 py-10 text-center md:text-left">
           <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex justify-center items-center">
-              <img
-                src="/logo/black_logo.png"
-                alt="FloraShop Logo"
-                className="h-16 w-auto sm:h-20 md:h-24 lg:h-28 xl:h-32 2xl:h-36"
-              />
+              <Link to="/">
+                <h1 className="font-bold text-sm  text-blue-600 font-serif flex flex-wrap h-16 w-auto sm:h-20 md:h-24 lg:h-28 xl:h-32 2xl:h-36">
+                  <span className="text-blue-600">Rash</span>
+                  <span className="text-blue-300">Market</span>
+                </h1>
+              </Link>
             </div>
 
             <div className="font-cinzel text-white">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                Products
+                Services
               </h6>
               <p className="mb-4">
                 <a href="#!" className=" text-white dark:text-neutral-200">
-                  Flower
+                  Rent
                 </a>
               </p>
               <p className="mb-4">
                 <a href="#!" className=" text-white dark:text-neutral-200">
-                  Gift Basket
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className=" text-white dark:text-neutral-200">
-                  Chocolate
-                </a>
-              </p>
-              <p>
-                <a href="#!" className=" text-white dark:text-neutral-200">
-                  Cakes
+                  Sale
                 </a>
               </p>
             </div>
@@ -115,12 +104,12 @@ export default function FooterCom() {
                 Contact
               </h6>
               <p className="mb-4 flex items-center justify-center md:justify-start">
-                <box-icon name="home" color="white"></box-icon>: Wanduragala,
+                <box-icon name="home" color="white"></box-icon>: Dodangaslanda,
                 Kurunegala ,SL
               </p>
               <p className="mb-4 flex items-center justify-center md:justify-start">
                 <box-icon name="envelope" color="white"></box-icon>:
-                flora@info.com
+                rashEstate.324@info.com
               </p>
               <p className="mb-4 flex items-center justify-center md:justify-start">
                 <box-icon name="phone-call" color="white"></box-icon>: + 01 234

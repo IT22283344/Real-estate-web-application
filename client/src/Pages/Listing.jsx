@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
+
 import {
   FaBath,
   FaBed,
@@ -63,7 +64,7 @@ export default function Listing() {
                 <div
                   className="h-[550px]"
                   style={{
-                    background: `url(${url}) center no-repeat`,
+                    background:`url(${url}) center no-repeat`,
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -141,7 +142,7 @@ export default function Listing() {
               </li>
             </ul>
             
-            {currentUser && listing.userRef !== currentUser._id  && !contact && (
+            {currentUser && {/*listing.userRef !== currentUser._id*/}  && !contact && (
               <button
                 onClick={() => setContact(true)}
                 className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"

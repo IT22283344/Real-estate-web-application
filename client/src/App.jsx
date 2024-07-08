@@ -10,8 +10,9 @@ import CreateListing from "./Pages/CreateListing";
 import UpdateListing from "./Pages/UpdateListing";
 import Listing from "./Pages/listing";
 import Search from "./Pages/Search";
-import { Footer } from "flowbite-react";
 import ScrollToTop from "./Components/ScrollToTop";
+import Footer from "./Components/Footer";
+
 
 export default function App() {
   return (
@@ -36,7 +37,7 @@ export default function App() {
             />
           </Route>
         </Routes>
-        <Footer />
+        <Footer/>
       </>
     </BrowserRouter>
   );
