@@ -48,20 +48,32 @@ export default function Home() {
   return (
     <div>
       {/* top */}
-      <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
+      <div
+        className="flex flex-col gap-6 p-28 pl-32 px-3 h-[600px] max-w-8xl mx-auto"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+
+      <div className="flex flex-col gap-6 p-28 pl-32 px-3 max-w-8xl mx-auto">
         <h1 className="text-slate-700 font-bold text-3xl lg:text-6xl">
           Find your next <span className="text-slate-500">perfect</span>
           <br />
-          place with ease
+          place with ease...
         </h1>
         <div className="text-gray-400 text-xs sm:text-sm">
-          Rash Estate is the best place to find your next perfect place to live.
+          Lanka real Estate is the best place to find your next perfect place to
+          live.
           <br />
           We have a wide range of properties for you to choose from.
         </div>
         <Link
           to={"/search"}
-          className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
+          className="text-lg sm:text-lg text-blue-800 font-bold hover:underline"
         >
           Let's get started...
         </Link>
@@ -86,67 +98,67 @@ export default function Home() {
 
       {/* listing results for offer, sale and rent */}
 
-      <div className="max-w-8xl mx-auto p-3 pl-24 flex flex-col gap-8 my-10">
+      <div className="max-w-8xl mx-auto p-3 pl-52 flex flex-col gap-8 my-10 ">
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl font-semibold text-slate-600 pb-4 ">
                 Recent offers
               </h2>
-              <Link
-                className="text-sm text-blue-800 hover:underline"
-                to={"/search?offer=true"}
-              >
-                Show more offers
-              </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pb-5">
               {offerListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <Link
+              className="text-lg pl-4 text-blue-700 hover:underline "
+              to={"/search?offer=true"}
+            >
+              Show more offers
+            </Link>
           </div>
         )}
 
         {rentListings && rentListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl pb-4 font-semibold text-slate-600">
                 Recent places for rent
               </h2>
-              <Link
-                className="text-sm text-blue-800 hover:underline"
-                to={"/search?type=rent"}
-              >
-                Show more places for rent
-              </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pb-5">
               {rentListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <Link
+              className="text-lg pl-4 text-blue-700 hover:underline "
+              to={"/search?type=rent"}
+            >
+              Show more places for rent
+            </Link>
           </div>
         )}
 
         {saleListings && saleListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl font-semibold text-slate-600 pb-4 ">
                 Recent places for sale
               </h2>
-              <Link
-                className="text-sm text-blue-800 hover:underline"
-                to={"/search?type=sale"}
-              >
-                Show more places for sale
-              </Link>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pb-5">
               {saleListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
+            <Link
+              className="text-lg pl-4 text-blue-700 hover:underline "
+              to={"/search?type=sale"}
+            >
+              Show more places for sale
+            </Link>
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import "boxicons/css/boxicons.min.css";
 
 export default function Header() {
     const { currentUser } = useSelector((state) => state.user);
@@ -26,11 +27,13 @@ export default function Header() {
 
   return (
     <header className="bg-slate-200 shadow-md">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+      <div className="flex justify-between items-center max-w-7xl mx-auto p-5">
         <Link to="/">
-          <h1 className="font-bold text-sm  text-blue-600 font-serif flex flex-wrap">
-            <span className="text-blue-600">Rash</span>
-            <span className="text-blue-300">Market</span>
+          <h1 className="font-bold text-sm bg-purple-300 rounded-xl p-3  text-blue-600 font-serif flex flex-wrap">
+            <box-icon name="home" color="blue" className="text-xl" ></box-icon>
+            <span className="text-blue-600 text-2xl font-semibold">LANKA</span>
+            <span className="text-blue-600 text-sm pt-2 pl-1 font-semibold">real</span>
+            <span className="text-white text-2xl pl-1">Estate</span>
           </h1>
         </Link>
         <form onSubmit={handleSubmit} className="bg-slate-100 p-3 rounded-lg flex items-center">

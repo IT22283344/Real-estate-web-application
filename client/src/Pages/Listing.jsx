@@ -25,7 +25,7 @@ export default function Listing() {
   const params = useParams();
   const [contact, setContact] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
-
+console.log(listing)
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -61,8 +61,7 @@ export default function Listing() {
           <Swiper navigation>
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
-                <div
-                  className="h-[550px]"
+                <div className="h-[650px] "
                   style={{
                     background:`url(${url}) center no-repeat`,
                     backgroundSize: "cover",
@@ -96,21 +95,22 @@ export default function Listing() {
             <p className="text-2xl font-semibold">
               {listing.name} - ${' '}
               {listing.offer
-                ? listing.discountPrice?.toLocaleString('en-US')
+                ? listing.discountedPrice.toLocaleString('en-US')
                 : listing.regularPrice?.toLocaleString('en-US')}
               {listing.type === 'rent' && ' / month'}
             </p>
-            <p className="flex items-center mt-6 gap-2 text-slate-600 text-sm">
+            <p className="flex items-center mt-6 gap-2 text-slate-600 text-lg">
               <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 pb-3">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
               {listing.offer && (
                 <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-                  ${+listing.regularPrice - +listing.discountPrice} OFF
+                  $ {+listing.regularPrice - +listing.discountedPrice} OFF
+                  
                 </p>
               )}
             </div>
@@ -119,25 +119,25 @@ export default function Listing() {
               <span className="font-semibold text-black">Description - </span>
               {listing.description}
             </p>
-            <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
-              <li className="flex items-center gap-1 whitespace-nowrap">
-                <FaBed className="text-lg" />
+            <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center pt-5 gap-4 sm:gap-6">
+              <li className="flex items-center text-lg gap-1 whitespace-nowrap">
+                <FaBed className="text-4xl" />
                 {listing.bedrooms > 1
                   ? `${listing.bedrooms} beds`
                   : `${listing.bedrooms} bed`}
               </li>
-              <li className="flex items-center gap-1 whitespace-nowrap">
-                <FaBath className="text-lg" />
+              <li className="flex text-lg items-center gap-1 whitespace-nowrap">
+                <FaBath className="text-4xl" />
                 {listing.bathrooms > 1
                   ? `${listing.bathrooms} baths`
                   : `${listing.bathrooms} bath`}
               </li>
-              <li className="flex items-center gap-1 whitespace-nowrap">
-                <FaParking className="text-lg" />
+              <li className="flex items-center text-lg gap-1 whitespace-nowrap">
+                <FaParking className="text-4xl" />
                 {listing.parking ? "Parking spot" : "No Parking"}
               </li>
-              <li className="flex items-center gap-1 whitespace-nowrap">
-                <FaChair className="text-lg" />
+              <li className="flex items-center text-lg gap-1 whitespace-nowrap">
+                <FaChair className="text-4xl" />
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
@@ -145,7 +145,7 @@ export default function Listing() {
             {currentUser && {/*listing.userRef !== currentUser._id*/}  && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"
+                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 mt-5 p-3"
               >
                 Contact landlord
               </button>
