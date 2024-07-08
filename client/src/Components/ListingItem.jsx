@@ -3,7 +3,7 @@ import { MdLocationOn } from "react-icons/md";
 
 export default function ListingItem({ listing }) {
   return (
-    <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
+    <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[300px]">
       <Link to={`/listing/${listing._id}`}>
         <img
           src={
@@ -40,7 +40,7 @@ export default function ListingItem({ listing }) {
                 ? `${listing.bedrooms} beds `
                 : `${listing.bedrooms} bed `}
             </div>
-            
+
             <div className="font-bold text-xs">
               {listing.bathrooms > 1
                 ? `${listing.bathrooms} baths `
