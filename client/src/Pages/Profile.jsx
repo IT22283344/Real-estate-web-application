@@ -206,6 +206,14 @@ export default function Profile() {
           className="p-3 m-2 mt-10 border rounded-lg bg-transparent focus:outline-none"
           onChange={handleChange}
         />
+         <input
+          type="text"
+          id="contact"
+          placeholder="Mobile"
+          defaultValue={currentUser.contact}
+          className="p-3 m-2  border rounded-lg bg-transparent focus:outline-none"
+          onChange={handleChange}
+        />
         <input
           type="email"
           id="email"

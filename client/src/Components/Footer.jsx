@@ -17,7 +17,7 @@ export default function FooterCom() {
 
           <div className="flex justify-center">
             <a
-              href="https://www.facebook.com/SondurumamalKurunegala/"
+              href=" "
               className="mr-6 text-neutral-600 dark:text-neutral-200"
               target="_blank"
               rel="noopener noreferrer"
@@ -47,11 +47,21 @@ export default function FooterCom() {
 
         <div className="mx-6 py-10 text-center md:text-left">
           <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center pt-1">
               <Link to="/">
-                <h1 className="font-bold text-sm  text-blue-600 font-serif flex flex-wrap h-16 w-auto sm:h-20 md:h-24 lg:h-28 xl:h-32 2xl:h-36">
-                  <span className="text-blue-600">Rash</span>
-                  <span className="text-blue-300">Market</span>
+                <h1 className="font-bold text-sm bg-purple-300 rounded-xl p-3  text-blue-600 font-serif flex flex-wrap">
+                  <box-icon
+                    name="home"
+                    color="blue"
+                    className="text-xl"
+                  ></box-icon>
+                  <span className="text-blue-600 text-2xl font-semibold">
+                    LANKA
+                  </span>
+                  <span className="text-blue-600 text-sm pt-2 pl-1 font-semibold">
+                    real
+                  </span>
+                  <span className="text-white text-2xl pl-1">Estate</span>
                 </h1>
               </Link>
             </div>
@@ -84,11 +94,6 @@ export default function FooterCom() {
               <p className="mb-4">
                 <a href="#!" className=" text-white dark:text-neutral-200">
                   Settings
-                </a>
-              </p>
-              <p className="mb-4">
-                <a href="#!" className=" text-white dark:text-neutral-200">
-                  Orders
                 </a>
               </p>
               <p>

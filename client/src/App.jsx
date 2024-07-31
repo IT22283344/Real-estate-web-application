@@ -12,6 +12,7 @@ import Listing from "./Pages/listing";
 import Search from "./Pages/Search";
 import ScrollToTop from "./Components/ScrollToTop";
 import Footer from "./Components/Footer";
+import FloatingWhatsAppButton from "./Components/Floatingwhatsappbutton";
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           </Route>
         </Routes>
         <Footer/>
+        <FloatingWhatsAppButton/>
       </>
     </BrowserRouter>
   );

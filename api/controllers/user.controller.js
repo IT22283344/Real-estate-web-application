@@ -14,7 +14,17 @@ export const updateUser = async (req, res, next) => {
       return next(errorHandler(401, 'You can only update your own account!'));
     try {
       if (req.body.password) {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{5,}$/;
+        if (!passwordRegex.test(req.body.password)) {
+            return next(errorHandler(400, 'Password should be at least 5 characters long and contain at least one uppercase letter, one digit, and one symbol (!@#$%^&*()_+).'));
+        }
         req.body.password = bcryptjs.hashSync(req.body.password, 10);
+      }
+      if (req.body.contact) {
+        const mobileRegex = /^(071|076|077|075|078|070|074|072)\d{7}$/;
+        if (!mobileRegex.test(req.body.contact)) {
+            return next(errorHandler(400, 'Invalid mobile number format.'));
+        }      
       }
   
       const updatedUser = await User.findByIdAndUpdate(
@@ -24,6 +34,7 @@ export const updateUser = async (req, res, next) => {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
+            contact: req.body.contact,
             avatar: req.body.avatar,
           },
         },

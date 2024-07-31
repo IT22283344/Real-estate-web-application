@@ -46,6 +46,7 @@ export default function Signup() {
       <form onSubmit={handlesubmit} className='flex flex-col gap-4'>
         <input className='bg-slate-100  rounded ' id='username' autoComplete='username' type='text' placeholder='Username' onChange={handlechange}  />
         <input className='bg-slate-100  rounded' id='email' type='email' autoComplete='email' placeholder='E-mail' onChange={handlechange} />
+        <input className='bg-slate-100  rounded' id='contact' type='text' autoComplete='text' placeholder='Mobile' onChange={handlechange} />
         <input className='bg-slate-100  rounded' id='password' type='password' placeholder='*********' onChange={handlechange}/>
         <button className='bg-slate-700 text-white rounded-lg p-2 uppercase hover:opacity-95' >{loading?'loading...':'sign Up'}</button>
         <OAuth/>
