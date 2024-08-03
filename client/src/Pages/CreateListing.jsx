@@ -167,6 +167,17 @@ export default function CreateListing() {
             onChange={handleChange}
             value={formData.name}
           />
+          <input
+            type="text"
+            placeholder="Contact"
+            className="border p-3 rounded-lg"
+            id="contactno"
+            maxLength="62"
+            minLength="5"
+            required
+            onChange={handleChange}
+            value={formData.contactno}
+          />
           <textarea
             type="text"
             placeholder="Description"

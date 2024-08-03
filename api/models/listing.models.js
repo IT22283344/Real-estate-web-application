@@ -11,6 +11,10 @@ const listingSchema = new mongoose.Schema(
             type:String,
             required:true,
         },
+        contactno:{
+            type:String,
+            required:true,
+        },
         address:{
             type:String,
             required:true,

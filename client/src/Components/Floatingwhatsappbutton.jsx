@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 
 const FloatingWhatsAppButton = () => {
-  
     const phoneNumber = '94768390430'; // Replace with your WhatsApp phone number in international format without '+'
 
   const handleClick = () => {

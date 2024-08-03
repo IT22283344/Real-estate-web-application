@@ -15,6 +15,7 @@ import {
   FaShare,
 } from "react-icons/fa";
 import Contact from "../Components/Contact";
+import FloatingWhatsAppButton from "../Components/Floatingwhatsappbutton";
 
 export default function Listing() {
   SwiperCore.use([Navigation]);
@@ -102,7 +103,7 @@ console.log(listing)
             <p className="flex items-center mt-6 gap-2 text-slate-600 text-lg">
               <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
-            </p>
+            </p> 
             <div className="flex gap-4 pb-3">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
@@ -151,6 +152,8 @@ console.log(listing)
               </button>
             )}
             {contact && <Contact listing={listing} />}
+            {contact && <Contact listing={listing} />}
+            {<FloatingWhatsAppButton con={listing}/>}
           </div>
         </div>
       )}
