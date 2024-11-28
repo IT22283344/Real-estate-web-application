@@ -152,7 +152,6 @@ console.log(listing)
               </button>
             )}
             {contact && <Contact listing={listing} />}
-            {contact && <Contact listing={listing} />}
             {<FloatingWhatsAppButton con={listing}/>}
           </div>
         </div>

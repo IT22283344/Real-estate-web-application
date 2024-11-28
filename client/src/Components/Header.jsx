@@ -1,9 +1,8 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import "boxicons/css/boxicons.min.css";
-import "./Header.css"; // Assuming you are importing the CSS file here
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
@@ -12,55 +11,57 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const urlParms = new URLSearchParams(window.location.search);
-    urlParms.set("searchTerm", searchTerm);
-    const searchQuery = urlParms.toString();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
       setSearchTerm(searchTermFromUrl);
     }
-  }, [location.search]);
+  }, [window.location.search]);
 
   return (
-    <header className="bg-slate-200 shadow-md sticky top-0">
-      <div className="flex justify-between items-center max-w-7xl mx-auto p-5">
-        <Link to="/">
-          <h1 className="font-bold text-sm bg-purple-300 rounded-xl p-3  text-blue-600 font-serif flex flex-wrap">
-            <box-icon name="home" color="blue" className="text-xl"></box-icon>
-            <span className="text-blue-600 text-2xl font-semibold">LANKA</span>
-            <span className="text-blue-600 text-sm pt-2 pl-1 font-semibold">
-              real
-            </span>
-            <span className="text-white text-2xl pl-1">Estate</span>
+    <header className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 shadow-md sticky top-0 z-50">
+      <div className="flex flex-wrap justify-between items-center max-w-7xl mx-auto p-4 md:px-8">
+        {/* Logo Section */}
+        <Link to="/" className="flex items-center space-x-2">
+          <box-icon name="home" color="white" size="md"></box-icon>
+          <h1 className="text-white text-xl font-bold flex items-center">
+            <span>LANKA</span>
+            <span className="text-sm ml-1">Real Estate</span>
           </h1>
         </Link>
+
+        {/* Search Bar */}
         <form
           onSubmit={handleSubmit}
-          className="bg-slate-100 p-3 rounded-lg flex items-center"
+          className="relative flex items-center bg-white rounded-full shadow-md px-4 py-2 w-full md:w-1/2 max-w-md"
         >
           <input
             type="text"
-            placeholder="Search....."
-            className="bg-transparent focus:outline-none w-24 sm:w-64"
+            placeholder="Search..."
+            className="bg-transparent focus:outline-none w-full text-sm text-gray-700"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button>
-            <FaSearch className="text-slate-600"></FaSearch>
+          <button type="submit" className="absolute right-3">
+            <FaSearch className="text-gray-500" />
           </button>
         </form>
-        <ul className="flex gap-4">
+
+        {/* Navigation Links */}
+        <nav className="flex items-center space-x-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive
-                ? "nav-item nav-item-active text-primary font-semibold text-xl"
-                : "nav-item text-black text-xl"
+              `text-white text-sm md:text-base ${
+                isActive ? "font-semibold underline" : "hover:underline"
+              }`
             }
           >
             Home
@@ -68,28 +69,25 @@ export default function Header() {
           <NavLink
             to="/About"
             className={({ isActive }) =>
-              isActive
-                ? "nav-item nav-item-active text-primary font-semibold text-xl"
-                : "nav-item text-black text-xl"
+              `text-white text-sm md:text-base ${
+                isActive ? "font-semibold underline" : "hover:underline"
+              }`
             }
           >
-            About us
+            About Us
           </NavLink>
-
-          <Link to="/Profile">
+          <Link to="/Profile" className="flex items-center">
             {currentUser ? (
               <img
-                className="rounded-full w-8 h-8 ml-10 object-cover"
+                className="rounded-full w-8 h-8 border-2 border-white object-cover"
                 src={currentUser.avatar}
                 alt="Profile"
               />
             ) : (
-              <li className="hidden sm:inline text-slate-700 hover:underline">
-                Signin
-              </li>
+              <FaUserCircle className="text-white text-2xl" />
             )}
           </Link>
-        </ul>
+        </nav>
       </div>
     </header>
   );
